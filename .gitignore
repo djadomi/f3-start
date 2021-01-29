@@ -1,7 +1,6 @@
 .remote-sync.json
-f3/logs/*
-!f3/logs/.keep
-f3/tmp/*
-f3/tmp/cache/*
+**/f3/logs
+**/f3/tmp
 !f3/tmp/cache/.keep
+!.keep
 info.php
