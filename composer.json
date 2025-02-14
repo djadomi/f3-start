@@ -9,6 +9,7 @@
 		"scssphp/scssphp": "^2.0",
 		"ikkez/f3-flash": "^1.0",
 		"nesbot/carbon": "^3.8",
-		"scrivo/highlight.php": "v9.18.1.10"
+		"scrivo/highlight.php": "v9.18.1.10",
+		"foroco/php-browser-detection": "^2.8"
 	}
 }
