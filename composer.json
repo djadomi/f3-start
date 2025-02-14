@@ -1,0 +1,14 @@
+{
+	"name": "bcosca/fatfree",
+	"description": "A powerful yet easy-to-use PHP micro-framework designed to help you build dynamic and robust Web applications - fast!",
+	"homepage": "http://fatfreeframework.com/",
+	"type": "project",
+	"license": "GPL-3.0",
+	"require": {
+		"bcosca/fatfree-core": "^3.8",
+		"scssphp/scssphp": "^2.0",
+		"ikkez/f3-flash": "^1.0",
+		"nesbot/carbon": "^3.8",
+		"scrivo/highlight.php": "v9.18.1.10"
+	}
+}
