@@ -1,0 +1,8 @@
+<h1>{{@ERROR.status}}</h1>
+<check if="{{@DEBUG > 0}}">
+<pre>
+{{@ERROR.text}}
+
+{{@ERROR.trace | raw}}
+</pre>
+</check>
