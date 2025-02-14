@@ -1,0 +1,14 @@
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<title x-text="'PROJECT - ' + alias">
+	</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<check if="{{@DEBUG > 0}}">
+		<link rel="stylesheet" href="code.css"/>
+	</check>
+	<style>
+	</style>
+	<link rel="stylesheet" href="/assets/css?{{@csstime ?? ''}}{{@GET.cc ?? null == '1' ? '&t=' . time() : ''}}"/>
+	<script defer src="/assets/js?{{@jstime ?? ''}}{{@GET.cc ?? null == '1' ? '&t=' . time() : ''}}"></script>
+</head>

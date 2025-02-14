@@ -1,0 +1,5 @@
+<footer>
+	<check if="{{@DEBUG > 0}}">
+		<pre class="hljs">SESSION{{PHP_EOL}}{{@hl('json', \json_encode(@SESSION ?? null, JSON_PRETTY_PRINT))}}</pre>
+	</check>
+</footer>

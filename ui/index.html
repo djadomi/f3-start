@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en"
+x-data="{
+	alias: '{{@ALIAS}}',
+	title: '{{@pages.home.title}}',
+}"
+>
+<include href="head.html"></include>
+<body
+:alias="alias"
+>
+	<h1>PROJECT</h1>
+	<include href="messages.html"></include>
+	<h2 x-text="title"></h2>
+	<include href="{{@template}}"></include>
+	<include href="footer.html"></include>
+</body>
+</html>

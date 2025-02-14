@@ -1,0 +1,59 @@
+<check if="{{\Flash::instance()->hasMessages()}}">
+	<div>
+		<style>
+			me {
+				article {
+					--hue: 30;
+					--text-l: 25%;
+					background: hsl(var(--hue) 50% 50% / 0.25);
+					border-radius: 0.5rem;
+					color: hsl(var(--hue) 100% var(--text-l));
+					margin-block-end: 1rem;
+					padding: 1rem;
+					position: relative;
+					text-align: center;
+					&.success {
+						--hue: 100;
+					}
+					&.error {
+						--hue: 0;
+					}
+					a.close {
+						cursor: pointer;
+						opacity: 0.5;
+						position: absolute;
+						right: 0.5rem;
+						top: 0.5rem;
+						svg {
+							fill: white;
+							height: 1.5rem;
+						}
+						&:hover {
+							opacity: 1;
+						}
+					}
+					@media (prefers-color-scheme: dark) {
+						--text-l: 75%;
+					}
+				}
+			}
+		</style>
+		<repeat group="{{\Flash::instance()->getMessages()}}" value="{{@msg}}">
+			<article
+			class="message {{@msg.status}}"
+			x-data="{
+				open: true,
+			}"
+			x-show="open"
+			x-transition
+			>
+				<div>{{@msg.text}}</div>
+				<a
+				@click="open = false"
+				class="close"
+				href="javascript:void(0)"
+				><svg><use xlink:href="/svg/symbols.svg#circle-xmark"></use></svg></a>
+			</article>
+		</repeat>
+	</div>
+</check>
