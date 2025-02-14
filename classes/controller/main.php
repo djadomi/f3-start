@@ -1,11 +1,17 @@
 <?php
 namespace Controller;
 class Main extends \Prefab {
-	public $s, $e, $log;
+	public $s, $e, $log, $v;
 	function __construct() {
 		$this->s = \microtime(1);
 		$f3 = \Base::instance();
 		$this->log = new \Controller\Log('debug.log');
+		$this->v = new \Predis\Client([
+			'scheme' => 'tcp',
+			'host' => $f3->get('valkey.host') ?? '127.0.0.1',
+			'port' => $f3->get('valkey.port') ?? 6379,
+		]);
+		$this->log->w($this->v->get('foo'), 'v->foo', 2, 0);
 	}
 	function beforeroute(\Base $f3) {
 		if ($f3->get('GET.cc') == 1) \Cache::instance()->reset();

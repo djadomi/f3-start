@@ -10,6 +10,7 @@
 		"ikkez/f3-flash": "^1.0",
 		"nesbot/carbon": "^3.8",
 		"scrivo/highlight.php": "v9.18.1.10",
-		"foroco/php-browser-detection": "^2.8"
+		"foroco/php-browser-detection": "^2.8",
+		"predis/predis": "^2.3"
 	}
 }
