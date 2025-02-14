@@ -2,7 +2,7 @@
 <html lang="en"
 x-data="{
 	alias: '{{@ALIAS}}',
-	title: '{{@pages.home.title}}',
+	title: '{{@pages[@ALIAS].title ?? ''}}',
 }"
 >
 <include href="head.html"></include>

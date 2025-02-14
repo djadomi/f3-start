@@ -27,7 +27,8 @@ class Main extends \Prefab {
 		// \Flash::instance()->addMessage('lorem ipsum', 'success');
 		// \Flash::instance()->addMessage('lorem ipsum', 'warning');
 		// \Flash::instance()->addMessage('lorem ipsum', 'error');
-		$f3->set('template', $f3->get('ALIAS') . '.html');
+		$t = $f3->get('ALIAS') . '.html';
+		$f3->set('template', \file_exists('../ui/' . $t) ? $t : 'missing.html');
 		$this->log->w($f3->get('template'), 'template', 2, 0);
 	}
 	function error($f3) {
