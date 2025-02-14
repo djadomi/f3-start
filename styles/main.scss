@@ -1,0 +1,68 @@
+:root {
+	--basehue: 30;
+}
+body {
+	--bg-l: 95%;
+	--text-l: 5%;
+	background: hsl(var(--basehue) 2% var(--bg-l));
+	color: hsl(var(--basehue) 5% var(--text-l) / 0.75);
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	font-weight: 200;
+	padding: 1rem;
+	@media (prefers-color-scheme: dark) {
+		--bg-l: 10%;
+		--text-l: 75%;
+	}
+}
+[x-cloak] {
+	display: none;
+}
+svg {
+	aspect-ratio: 1;
+	height: 1rem;
+}
+a {
+	text-decoration: none;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 200;
+	margin: 0 0 0.5em;
+	padding: 0;
+}
+h1 {
+	font-size: 2rem;
+}
+h2 {
+	font-size: 1.5rem;
+}
+h3 {
+	font-size: 1.25rem;
+}
+h4 {
+	font-size: 1rem;
+}
+h5 {
+	font-size: 0.875rem;
+}
+h6 {
+	font-size: 0.75rem;
+}
+
+[icon] {
+	cursor: pointer;
+	display: inline-block;
+	margin-bottom: 0.5rem;
+	svg {
+		background: hsl(var(--basehue) 25% 50% / 0.75);
+		border-radius: 5rem;
+		padding: 0.5rem;
+	}
+}
+.hljs {
+	border-radius: 0.5rem;
+}
+@keyframes rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
