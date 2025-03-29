@@ -59,6 +59,7 @@ class Util extends Main {
 					'css' => [
 					],
 					'scss' => [
+						'inc/microtip.css',
 						'main.scss',
 					],
 				];
@@ -92,6 +93,8 @@ class Util extends Main {
 				$assets = [
 					'min' => [
 						'inc/htmx.min.js',
+						'inc/alpine-collapse.min.js',
+						'inc/alpine-persist.min.js',
 						'inc/alpine.min.js',
 						'inc/css-scope-inline.js',
 					],
