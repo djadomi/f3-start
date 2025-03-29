@@ -35,6 +35,15 @@ class Util extends Main {
 			'technology' => 'HTML5',
 		];
 	}
+	/**
+	 * Serves concatenated and minified CSS and JavaScript assets.
+	 *
+	 * This method handles the serving of CSS and JavaScript assets. It concatenates
+	 * multiple files, minifies them, and sets the appropriate content type header.
+	 * It supports both CSS (including SCSS compilation) and JavaScript files.
+	 *
+	 * @param \Base $f3 The F3 base instance.
+	 */
 	function assets() {
 		$f3 = \Base::instance();
 		$this->log->w($f3->get('PARAMS.type'), 'type', 3);
