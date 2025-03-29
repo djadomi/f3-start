@@ -35,4 +35,67 @@ class Util extends Main {
 			'technology' => 'HTML5',
 		];
 	}
+	function assets() {
+		$f3 = \Base::instance();
+		$this->log->w($f3->get('PARAMS.type'), 'type', 3);
+		$f3->set('raw', 1);
+		$f3->set('template', 'raw.html');
+		$f3->set('result', '');
+		switch ($f3->get('PARAMS.type')) {
+			case 'css': {
+				$f3->set('contenttype', 'text/css');
+				$assets = [
+					'min' => [
+					],
+					'css' => [
+					],
+					'scss' => [
+						'main.scss',
+					],
+				];
+				if ($f3->get('DEBUG') > 0) {
+					$assets['scss'][] = 'atom-one-dark.css';
+				}
+				foreach ($assets['min'] as $i) {
+					$prefix = preg_match('/^http/', $i) ? '' : '../styles/';
+					$this->log->w("$prefix$i", 'adding min.css', 3, 0);
+					$f3->result .= \file_get_contents("$prefix$i") . "\n";
+				}
+				foreach ($assets['css'] as $i) {
+					$prefix = preg_match('/^http/', $i) ? '' : '../styles/';
+					$this->log->w("$prefix$i", 'adding css', 3, 0);
+					$f3->result .= \Web::instance()->minify("$prefix$i") . "\n";
+				}
+				if (count($assets['scss']) > 0) {
+					$scssphp = new \ScssPhp\ScssPhp\Compiler;
+					$scssphp->setImportPaths('../styles/');
+					$scssphp->setOutputStyle(\ScssPhp\ScssPhp\OutputStyle::COMPRESSED);
+					foreach ($assets['scss'] as $i) {
+						$prefix = preg_match('/^http/', $i) ? '' : "../styles/";
+						$this->log->w("$prefix$i", 'adding scss', 3, 0);
+						// $file = \file_get_contents("$prefix$i");
+						$f3->result .= $scssphp->compileString(\file_get_contents("$prefix$i"))->getCss();
+					}
+				}
+				break;
+			}
+			case 'js': {
+				$assets = [
+					'min' => [
+						'inc/htmx.min.js',
+						'inc/alpine.min.js',
+						'inc/css-scope-inline.js',
+					],
+					'list' => 'main.js',
+				];
+				foreach ($assets['min'] as $i) {
+					$prefix = preg_match('/^https/', $i) ? '' : "../scripts/";
+					$this->log->w("$prefix$i", 'adding minified js', 3, 0);
+					$f3->result .= "/* $prefix$i */\n" . \file_get_contents("$prefix$i") . ";\n";
+				}
+				$f3->result .= "/* {$assets['list']} */\n" . \Web::instance()->minify($assets['list'], 'application/x-javascript', 1, "{$f3->get('root')}/scripts/");
+				break;
+			}
+		}
+	}
 }
