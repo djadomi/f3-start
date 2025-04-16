@@ -2,6 +2,9 @@
 <html lang="en"
 x-data="{
 	alias: '{{@ALIAS}}',
+	loading: false,
+	menu: false,
+	theme: $persist(''),
 	title: '{{@pages[@ALIAS].title ?? ''}}',
 }"
 >
@@ -9,10 +12,12 @@ x-data="{
 <body
 :alias="alias"
 >
-	<h1>{{@project}}</h1>
-	<include href="messages.html"></include>
-	<h2 x-text="title"></h2>
-	<include href="{{@template}}"></include>
+	<include href="header.html"></include>
+	<include href="menu.html"></include>
+	<main>
+		<include href="messages.html"></include>
+		<include href="{{@template}}"></include>
+	</main>
 	<include href="footer.html"></include>
 </body>
 </html>
