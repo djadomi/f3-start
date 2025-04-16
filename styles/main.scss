@@ -1,18 +1,50 @@
 :root {
-	--basehue: 30;
-}
-body {
+	--a: hsl(var(--basehue) 75% calc(var(--text-l) * 2));
+	--basehue: 220;
 	--bg-l: 95%;
-	--text-l: 5%;
-	background: hsl(var(--basehue) 2% var(--bg-l));
-	color: hsl(var(--basehue) 5% var(--text-l) / 0.75);
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-	font-weight: 200;
-	padding: 1rem;
+	--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) - 5%) / 0.75);
+	--block-p: 1vh 2vw;
+	--c: hsl(var(--basehue) 5% var(--text-l) / 0.85);
+	--eio: cubic-bezier(.65,.05,.36,1);
+	--h-l: 50%;
+	--ms: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+	--ss: -apple-system, Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--text-l: 20%;
 	@media (prefers-color-scheme: dark) {
+		--a: hsl(var(--basehue) 50% calc(var(--text-l) / 1.5));
 		--bg-l: 10%;
+		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) + 5%) / 0.75);
+		--h-l: 75%;
 		--text-l: 75%;
 	}
+}
+*, ::after, ::before {
+	box-sizing: border-box;
+}
+html {
+	&[theme=light] {
+		--a: hsl(var(--basehue) 75% calc(var(--text-l) * 2));
+		--bg-l: 95%;
+		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) - 5%) / 0.75);
+		--h-l: 50%;
+		--text-l: 20%;
+	}
+	&[theme=dark] {
+		--a: hsl(var(--basehue) 50% calc(var(--text-l) / 1.5));
+		--bg-l: 10%;
+		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) + 5%) / 0.75);
+		--h-l: 75%;
+		--text-l: 75%;
+	}
+}
+body {
+	background: hsl(var(--basehue) 15% var(--bg-l));
+	color: var(--c);
+	font-family: var(--ss);
+	font-size: clamp(1rem, 1.8vw, 1.25rem);
+	font-weight: 200;
+	margin: 0;
+	padding: 0;
 }
 [x-cloak] {
 	display: none;
@@ -22,12 +54,16 @@ svg {
 	height: 1rem;
 }
 a {
+	color: var(--a);
 	text-decoration: none;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 200;
 	margin: 0 0 0.5em;
 	padding: 0;
+	a {
+		color: hsl(var(--basehue) 5% var(--text-l) / 0.75);
+	}
 }
 h1 {
 	font-size: 2rem;
@@ -47,7 +83,22 @@ h5 {
 h6 {
 	font-size: 0.75rem;
 }
-
+main {
+	padding: var(--block-p);
+}
+footer {
+	padding: var(--block-p);
+}
+iframe {
+	border: none;
+	border-radius: 0.25rem;
+	height: 50vh;
+	margin-bottom: 2rem;
+	width: 100%;
+}
+.loading {
+	filter: blur(0.1rem) opacity(0.5);
+}
 [icon] {
 	cursor: pointer;
 	display: inline-block;
@@ -61,8 +112,6 @@ h6 {
 .hljs {
 	border-radius: 0.5rem;
 }
-@keyframes rotate {
-	100% {
-		transform: rotate(360deg);
-	}
-}
+@import 'form';
+@import 'utils';
+@import 'anim';

@@ -1,0 +1,89 @@
+:root {
+	--bg-input: hsl(var(--basehue) 15% calc(var(--bg-l) * 2));
+	--bd-input: 1px solid hsl(var(--basehue) 5% var(--text-l) / 0.25);
+	--c-input: hsl(var(--basehue) 5% var(--text-l) / 0.85);
+}
+fieldset {
+	border: none;
+	display: grid;
+	gap: 1rem;
+	margin: 0;
+	padding: 0;
+}
+label {
+	color: hsl(var(--basehue) 75% calc(var(--text-l)));
+}
+input {
+	background: var(--bg-input);
+	border: var(--bd-input);
+	border-radius: 0.25rem;
+	color: var(--c-input);
+	font-size: inherit;
+	padding: 0.5rem;
+	width: 100%;
+}
+textarea {
+	background: var(--bg-input);
+	border: var(--bd-input);
+	border-radius: 0.25rem;
+	color: var(--c-input);
+	font-family: var(--ss);
+	font-size: inherit;
+	height: 7rem;
+	margin: 0.5rem 0;
+	padding: 0.5rem;
+	width: 100%;
+	&[name=language] {
+		height: 2.5rem;
+	}
+}
+.select {
+	align-items: center;
+	color: var(--b-color);
+	display: grid;
+	margin: 0.5rem 0;
+	select {
+		appearance: none;
+		background: var(--bg-input);
+		border: var(--bd-input);
+		border-radius: 0.25rem;
+		color: var(--c-input);
+		font-size: inherit;
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		padding: 0.25rem 1.5rem 0.25rem .5rem;
+		width: 100%;
+	}
+	div {
+		padding: 0.25rem;
+	}
+	&::after {
+		aspect-ratio: 1.33;
+		background-color: var(--c);
+		clip-path: polygon(100% 0%, 0 0%, 50% 100%);
+		content: "";
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+		justify-self: end;
+		margin-inline: 0.5rem;
+		opacity: 0.25;
+		width: 0.75rem;
+	}
+	&.count0 {
+		&::after {
+			display: none;
+		}
+	}
+}
+:where(button, .btn) {
+	background: var(--bg-input);
+	border: var(--bd-input);
+	border-radius: 0.25rem;
+	color: var(--c-input) !important;
+	cursor: pointer;
+	font-size: inherit;
+	font-weight: 200;
+	justify-self: end;
+	padding-block: 0.5rem;
+	padding-inline: 2rem;
+}

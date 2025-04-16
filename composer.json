@@ -11,6 +11,7 @@
 		"nesbot/carbon": "^3.8",
 		"scrivo/highlight.php": "v9.18.1.10",
 		"foroco/php-browser-detection": "^2.8",
-		"predis/predis": "^2.3"
+		"predis/predis": "^2.3",
+		"xfra35/f3-multilang": "^1.3"
 	}
 }

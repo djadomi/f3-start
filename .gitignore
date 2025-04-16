@@ -10,5 +10,5 @@ tmp
 .vstags
 sitemap.xml
 test/*
+.DS_Store
 vendor
-tailwindcss
