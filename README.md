@@ -12,4 +12,6 @@ composer update
 git init
 mkdir logs tmp
 sudo chown www-data logs tmp
+# optionally create a placeholder for favicon to prevent 404 errors:
+touch htdocs/favicon.ico
 ```
