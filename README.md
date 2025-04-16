@@ -10,4 +10,6 @@ cd NEWPROJECTNAME
 rm -rf ./.git
 composer update
 git init
+mkdir logs tmp
+sudo chown www-data logs tmp
 ```
