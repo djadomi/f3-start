@@ -1,0 +1,136 @@
+<nav
+@click.outside="menu = false"
+@keydown.window.ctrl.shift.m="menu = !menu"
+x-show="menu"
+x-transition:enter="menu-enter"
+x-transition:enter-start="menu-enter-start"
+x-transition:enter-end="menu-enter-end"
+x-transition:leave="menu-leave"
+x-transition:leave-start="menu-leave-start"
+x-transition:leave-end="menu-leave-end"
+>
+	<style>
+		me {
+			--left: 5%;
+			--sm-left: calc(100% - 30rem);
+			align-items: start;
+			backdrop-filter: blur(1rem);
+			background: var(--bg-menu);
+			box-shadow: 0 0 2rem 1rem hsl(0 0% 5% / 0.125);
+			display: grid;
+			grid: 2rem 1fr 1fr / auto;
+			height: 100vh;
+			padding: 2vw;
+			position: fixed;
+			min-width: 20rem;
+			left: var(--left);
+			right: 0;
+			top: 0;
+			transition: left 0.25s var(--eio);
+			z-index: 9;
+			&.menu-enter-start {
+				left: 100%;
+			}
+			&.menu-enter-end {
+				left: var(--left);
+			}
+			&.menu-leave-start {
+				left: var(--left);
+			}
+			&.menu-leave-end {
+				left: 100%;
+			}
+			@media sm {
+				left: var(--sm-left);
+				&.menu-enter-end {
+					left: var(--sm-left);
+				}
+				&.menu-leave-start {
+					left: var(--sm-left);
+				}
+			}
+			[close] {
+				justify-self: end;
+				svg {
+					fill: var(--a);
+					height: 1.5rem;
+				}
+			}
+			div {
+				display: grid;
+				gap: 0.25rem;
+				nav {
+					background: #0000;
+					padding: 0.5rem;
+					a {
+						align-items: center;
+						background: hsl(var(--basehue) 50% 50% / 0.0125);
+						border-radius: 0.25rem;
+						display: grid;
+						gap: 0.5rem;
+						grid: auto / 1rem auto;
+						padding: 0.25rem 0.5rem;
+						svg {
+							fill: var(--a);
+							opacity: 0.125;
+							&.selected {
+								opacity: 0.5;
+							}
+						}
+						&:hover {
+							background: hsl(var(--basehue) 50% 50% / 0.125);
+							filter: brightness(1.25);
+						}
+					}
+					&[languages] {
+						display: flex;
+						flex-wrap: wrap;
+					}
+				}
+			}
+			footer {
+				align-self: end;
+			}
+		}
+	</style>
+	<a
+	@click="menu = false"
+	close
+	><svg><use xlink:href="/svg/symbols.svg#xmark"></use></svg></a>
+	<div>
+		<nav languages>
+			<repeat group="{{@ml.languages}}" value="{{@v}}">
+				<a href="{{@mlalias(@ALIAS, [], @v)}}">
+					<check if="{{@ml.current == @v}}">
+						<true>
+							<svg class="selected"><use xlink:href="/svg/symbols.svg#caret-right"></use></svg>
+						</true>
+						<false>
+							<svg><use xlink:href="/svg/symbols.svg#dot"></use></svg>
+						</false>
+					</check>
+					{{\ucfirst(\Locale::getDisplayLanguage(@v, @v))}}
+				</a>
+			</repeat>
+		</nav>
+		<nav sections>
+			<repeat group="{{[ 'home', 'aboutus', 'settings' ]}}" value="{{@v}}">
+				<a href="{{@v | alias}}">
+					<check if="{{@ALIAS == @v}}">
+						<true>
+							<svg class="selected"><use xlink:href="/svg/symbols.svg#caret-right"></use></svg>
+						</true>
+						<false>
+							<svg><use xlink:href="/svg/symbols.svg#dot"></use></svg>
+						</false>
+					</check>
+					{{@l[@v] | capitalise}}
+				</a>
+			</repeat>
+		</nav>
+	</div>
+	<footer>
+		…
+	</footer>
+</nav>
+

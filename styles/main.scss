@@ -1,17 +1,22 @@
 :root {
 	--a: hsl(var(--basehue) 75% calc(var(--text-l) * 2));
 	--basehue: 220;
+	--bg-button: hsl(var(--basehue) 50% calc(var(--bg-l) / 1.125));
+	--bg-button-hover: hsl(var(--basehue) 75% calc(var(--bg-l) / 1.25));
 	--bg-l: 95%;
 	--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) - 5%) / 0.75);
 	--block-p: 1vh 2vw;
 	--c: hsl(var(--basehue) 5% var(--text-l) / 0.85);
 	--eio: cubic-bezier(.65,.05,.36,1);
+	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
 	--h-l: 50%;
 	--ms: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--ss: -apple-system, Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 	--text-l: 20%;
 	@media (prefers-color-scheme: dark) {
 		--a: hsl(var(--basehue) 50% calc(var(--text-l) / 1.5));
+		--bg-button: hsl(var(--basehue) 25% calc(var(--bg-l) * 2));
+		--bg-button-hover: hsl(var(--basehue) 50% calc(var(--bg-l) * 2.5));
 		--bg-l: 10%;
 		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) + 5%) / 0.75);
 		--h-l: 75%;
@@ -24,6 +29,8 @@
 html {
 	&[theme=light] {
 		--a: hsl(var(--basehue) 75% calc(var(--text-l) * 2));
+		--bg-button: hsl(var(--basehue) 50% calc(var(--bg-l) / 1.25));
+		--bg-button-hover: hsl(var(--basehue) 75% calc(var(--bg-l) / 1.25));
 		--bg-l: 95%;
 		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) - 5%) / 0.75);
 		--h-l: 50%;
@@ -31,6 +38,8 @@ html {
 	}
 	&[theme=dark] {
 		--a: hsl(var(--basehue) 50% calc(var(--text-l) / 1.5));
+		--bg-button: hsl(var(--basehue) 25% calc(var(--bg-l) * 2));
+		--bg-button-hover: hsl(var(--basehue) 50% calc(var(--bg-l) * 2.5));
 		--bg-l: 10%;
 		--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) + 5%) / 0.75);
 		--h-l: 75%;
@@ -66,22 +75,22 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 h1 {
-	font-size: 2rem;
+	font-size: clamp(1.5rem, 1.2rem + 1.5vw, 3rem);
 }
 h2 {
-	font-size: 1.5rem;
+	font-size: clamp(1.25rem, 1.2rem + 0.25vw, 1.5rem);
 }
 h3 {
-	font-size: 1.25rem;
+	font-size: clamp(1.125rem, 1.1rem + 0.125vw, 1.25rem);
 }
 h4 {
-	font-size: 1rem;
+	font-size: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
 }
 h5 {
-	font-size: 0.875rem;
+	font-size: clamp(0.875rem, 0.85rem + 0.125vw, 1rem);
 }
 h6 {
-	font-size: 0.75rem;
+	font-size: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
 }
 main {
 	padding: var(--block-p);
@@ -111,6 +120,60 @@ iframe {
 }
 .hljs {
 	border-radius: 0.5rem;
+}
+[themeswitch] {
+	align-items: center;
+	background: hsl(0 0% 50% / 0.5);
+	border-radius: 5rem;
+	cursor: pointer;
+	display: flex;
+	height: 1.5rem;
+	justify-items: center;
+	justify-self: end;
+	line-height: 1;
+	padding: 0.25rem;
+	place-content: center;
+	text-align: center;
+	transition: all 0.25s var(--eio);
+	width: 1.5rem;
+	svg {
+		cursor: pointer;
+		fill: gold;
+		height: 1.25rem;
+		transition: all 0.125s var(--eio);
+	}
+	&:hover {
+		scale: 1.25;
+		svg {
+			filter: brightness(1.125);
+			scale: 1.125;
+		}
+	}
+}
+[aria-label][role~="tooltip"]::after {
+	background: hsl(50 50% 50% / 0.95);
+	color: #0009;
+	font-family: var(--ss);
+	padding: 0.25rem 0.5rem;
+}
+[role~="tooltip"][data-microtip-position="top"]:hover::before,
+[role~="tooltip"][data-microtip-position="top"]:hover::after {
+	transform: translate3d(-50%, 0, 0);
+}
+[role~="tooltip"][data-microtip-position="left"]::after {
+	margin-right: 10.5px;
+}
+[aria-label][role~="tooltip"]::before {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22hsl%2850%2050%25%2050%25%20%2F%200.95%29%22%20transform%3D%22rotate%280%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
+}
+[role~="tooltip"][data-microtip-position|="bottom"]::before {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2236px%22%20height%3D%2212px%22%3E%3Cpath%20fill%3D%22hsl%2850%2050%25%2050%25%20%2F%200.95%29%22%20transform%3D%22rotate%28180%2018%206%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
+}
+[role~="tooltip"][data-microtip-position="left"]::before {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212px%22%20height%3D%2236px%22%3E%3Cpath%20fill%3D%22hsl%2850%2050%25%2050%25%20%2F%200.95%29%22%20transform%3D%22rotate%28-90%2018%2018%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
+}
+[role~="tooltip"][data-microtip-position="right"]::before {
+	background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2212px%22%20height%3D%2236px%22%3E%3Cpath%20fill%3D%22hsl%2850%2050%25%2050%25%20%2F%200.95%29%22%20transform%3D%22rotate%2890%206%206%29%22%20d%3D%22M2.658,0.000%20C-13.615,0.000%2050.938,0.000%2034.662,0.000%20C28.662,0.000%2023.035,12.002%2018.660,12.002%20C14.285,12.002%208.594,0.000%202.658,0.000%20Z%22/%3E%3C/svg%3E") no-repeat;
 }
 @import 'form';
 @import 'utils';

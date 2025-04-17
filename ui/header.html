@@ -1,0 +1,63 @@
+<header>
+	<style>
+		me {
+			align-items: center;
+			backdrop-filter: blur(0.5rem);
+			background: var(--bg-menu);
+			display: grid;
+			grid: auto / auto 2rem;
+			left: 0;
+			padding: 2vw;
+			position: sticky;
+			right: 0;
+			top: 0;
+			h1 {
+				margin: 0;
+				a {
+					align-items: center;
+					display: flex;
+					gap: 0.5rem;
+					img {
+						max-width: 12rem;
+					}
+				}
+			}
+			nav {
+				display: grid;
+				svg {
+					height: 1.5rem;
+				}
+			}
+			[menu] {
+				justify-self: end;
+				svg {
+					fill: var(--a);
+					height: 1.5rem;
+				}
+			}
+		}
+	</style>
+	<h1><a href="/{{@ml.current}}"><img src="/images/{{@logo}}" alt="{{@project}}"></a></h1>
+	<nav>
+		<a
+		@click="menu = !menu"
+		menu
+		><svg><use xlink:href="/svg/symbols.svg#bars"></use></svg></a>
+		<a
+		@click="theme = theme == 'dark' ? 'light' : 'dark'"
+		aria-label="Switch colour scheme"
+		data-microtip-position="left"
+		role="tooltip"
+		themeswitch
+		>
+			<svg
+			moon
+			x-show="theme == 'dark'"
+			><use xlink:href="/svg/symbols.svg#moon-stars"></use></svg>
+			<svg
+			sun
+			x-show="theme != 'dark'"
+			><use xlink:href="/svg/symbols.svg#sun"></use></svg>
+		</a>
+	</nav>
+</header>

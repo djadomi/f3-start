@@ -10,6 +10,9 @@ class Main extends \Prefab {
 			'scheme' => 'tcp',
 			'host' => $f3->get('valkey.host') ?? '127.0.0.1',
 			'port' => $f3->get('valkey.port') ?? 6379,
+			'database' => $f3->get('valkey.database') ?? 0,
+		], [
+			'prefix' => $f3->get('valkey.prefix') ?? '',
 		]);
 		$this->jig = new \DB\Jig('../tmp/jig/');
 		$this->ml = \Multilang::instance();

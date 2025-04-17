@@ -76,7 +76,7 @@ textarea {
 	}
 }
 :where(button, .btn) {
-	background: var(--bg-input);
+	background: var(--bg-button);
 	border: var(--bd-input);
 	border-radius: 0.25rem;
 	color: var(--c-input) !important;
@@ -86,4 +86,7 @@ textarea {
 	justify-self: end;
 	padding-block: 0.5rem;
 	padding-inline: 2rem;
+	&:hover {
+		background: var(--bg-button-hover);
+	}
 }

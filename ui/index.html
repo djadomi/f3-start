@@ -1,5 +1,7 @@
 <!doctype html>
-<html lang="en"
+<html
+:theme="theme"
+lang="{{@ml.current}}"
 x-data="{
 	alias: '{{@ALIAS}}',
 	loading: false,
@@ -11,6 +13,7 @@ x-data="{
 <include href="head.html"></include>
 <body
 :alias="alias"
+@keydown.escape="menu = false"
 >
 	<include href="header.html"></include>
 	<include href="menu.html"></include>
