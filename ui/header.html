@@ -5,7 +5,7 @@
 			backdrop-filter: blur(0.5rem);
 			background: var(--bg-menu);
 			display: grid;
-			grid: auto / auto 2rem;
+			grid: auto / auto 4rem;
 			left: 0;
 			padding: 2vw;
 			position: sticky;
@@ -24,6 +24,7 @@
 			}
 			nav {
 				display: grid;
+				grid: auto / 1fr 1fr;
 				svg {
 					height: 1.5rem;
 				}
@@ -40,10 +41,6 @@
 	<h1><a href="/{{@ml.current}}"><img src="/images/{{@logo}}" alt="{{@project}}"></a></h1>
 	<nav>
 		<a
-		@click="menu = !menu"
-		menu
-		><svg><use xlink:href="/svg/symbols.svg#bars"></use></svg></a>
-		<a
 		@click="theme = theme == 'dark' ? 'light' : 'dark'"
 		aria-label="Switch colour scheme"
 		data-microtip-position="left"
@@ -59,5 +56,9 @@
 			x-show="theme != 'dark'"
 			><use xlink:href="/svg/symbols.svg#sun"></use></svg>
 		</a>
+		<a
+		@click="menu = !menu"
+		menu
+		><svg><use xlink:href="/svg/symbols.svg#bars"></use></svg></a>
 	</nav>
 </header>
