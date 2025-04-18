@@ -6,7 +6,7 @@ x-data="{
 	alias: '{{@ALIAS}}',
 	loading: false,
 	menu: false,
-	theme: $persist(''),
+	theme: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
 	title: '{{@pages[@ALIAS].title ?? ''}}',
 }"
 >
