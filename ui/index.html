@@ -6,6 +6,7 @@ x-data="{
 	alias: '{{@ALIAS}}',
 	loading: false,
 	menu: false,
+	shortcuts: false,
 	theme: $persist(window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'),
 	title: '{{@pages[@ALIAS].title ?? ''}}',
 }"
@@ -13,7 +14,9 @@ x-data="{
 <include href="head.html"></include>
 <body
 :alias="alias"
-@keydown.escape="menu = false"
+@keydown.escape="menu = false; shortcuts = false"
+@keydown.shift.d="if (!$event.ctrlKey && !$event.target.closest('input, textarea, select')) { $refs.themeswitch?.click(); }"
+@keydown="if (!$event.target.closest('input, textarea, select') && $event.key === '?') shortcuts = true"
 >
 	<include href="header.html"></include>
 	<include href="menu.html"></include>
@@ -22,5 +25,6 @@ x-data="{
 		<include href="{{@template}}"></include>
 	</main>
 	<include href="footer.html"></include>
+	<include href="shortcuts.html"></include>
 </body>
 </html>

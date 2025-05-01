@@ -1,6 +1,6 @@
 <nav
 @click.outside="menu = false"
-@keydown.window.ctrl.shift.m="menu = !menu"
+@keydown.window.shift.m="if (!$event.ctrlKey && !$event.target.closest('input, textarea, select')) { menu = !menu; }"
 x-show="menu"
 x-transition:enter="menu-enter"
 x-transition:enter-start="menu-enter-start"
