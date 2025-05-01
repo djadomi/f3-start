@@ -1,31 +1,44 @@
 <div
-@click.outside="shortcuts = false"
 x-show="shortcuts"
 x-transition
 >
 	<style>
 		me {
+			backdrop-filter: blur(0.25rem);
 			background: var(--bg-menu);
-			border-radius: 0.5rem;
-			box-shadow: 0 0 2rem hsl(0 0% 0% / 0.5), 0 0 0 0.125rem hsl(0 0% 50% / 0.25);
-			left: 50%;
-			min-width: 50%;
-			padding: 1rem;
+			height: 100vh;
+			inset: 0;
 			position: fixed;
-			top: 50%;
-			translate: -50% -50%;
-			width: 90%;
+			width: 100vw;
+			div {
+				background: var(--bg-menu);
+				border-radius: 0.5rem;
+				box-shadow: 0 0 2rem hsl(0 0% 0% / 0.5), 0 0 0 0.125rem hsl(0 0% 50% / 0.25);
+				left: 50%;
+				min-width: 50%;
+				padding: 1rem;
+				position: fixed;
+				top: 50%;
+				translate: -50% -50%;
+				width: 90%;
+			}
 		}
 		@media sm {
 			me {
-				width: auto;
+				div {
+					width: auto;
+				}
 			}
 		}
 	</style>
-	<h2>shortcuts</h2>
-	<ul>
-		<li>Shift-D: theme switch (dark/light)</li>
-		<li>Shift-M: open/close menu</li>
-		<li>Escape: close menu, other overlays</li>
-	</ul>
+	<div
+	@click.outside="shortcuts = false"
+	>
+		<h2>shortcuts</h2>
+		<ul>
+			<li>Shift-D: theme switch (dark/light)</li>
+			<li>Shift-M: open/close menu</li>
+			<li>Escape: close menu, other overlays</li>
+		</ul>
+	</div>
 </div>
