@@ -34,11 +34,12 @@ x-transition
 	<div
 	@click.outside="shortcuts = false"
 	>
-		<h2>shortcuts</h2>
+		<h2>{{@l.shortcuts}}</h2>
 		<ul>
-			<li>Shift-D: theme switch (dark/light)</li>
-			<li>Shift-M: open/close menu</li>
-			<li>Escape: close menu, other overlays</li>
+			<li>{{@l.questionmark}}</li>
+			<li>{{@l.shiftd}}</li>
+			<li>{{@l.shiftm}}</li>
+			<li>{{@l.escape}}</li>
 		</ul>
 	</div>
 </div>

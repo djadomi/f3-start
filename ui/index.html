@@ -16,7 +16,7 @@ x-data="{
 :alias="alias"
 @keydown.escape="menu = false; shortcuts = false"
 @keydown.shift.d="if (!$event.ctrlKey && !$event.target.closest('input, textarea, select')) { $refs.themeswitch?.click(); }"
-@keydown="if (!$event.target.closest('input, textarea, select') && $event.key === '?') shortcuts = true"
+@keydown="if (!$event.target.closest('input, textarea, select') && $event.key === '?') shortcuts = !shortcuts"
 >
 	<include href="header.html"></include>
 	<include href="menu.html"></include>
