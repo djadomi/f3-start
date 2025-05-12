@@ -1,6 +1,6 @@
 # f3-start
 
-Just a skeleton f3 site, with htmx, AlpineJS, CSI and some other bits.
+Just a skeleton f3 site, with Multilang, Valkey, htmx, AlpineJS, CSI and some other bits.
 
 Get a copy of this and start a new project with:
 
