@@ -1,14 +1,23 @@
 <head>
 	<meta charset="utf-8">
 	<base href="/">
-	<title x-text="'{{@project}} - ' + alias">
-	</title>
+	<title x-text="'{{@title ?? @project}} - ' + alias"></title>
+	<meta name="description" content="{{@description ?? ''}}">
+	<meta name="keywords" content="{{@keywords ?? ''}}">
+	<meta property="og:title" content="{{@title ?? @project}}">
+	<meta property="og:description" content="{{@description ?? ''}}">
+	<meta property="og:url" content="https://{{@HOST}}/{{@ml.current}}">
+	<meta property="og:type" content="website">
+	<meta property="og:image" content="https://{{@HOST}}/images/og-image.png">
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{@title ?? @project}}">
+	<meta name="twitter:description" content="{{@description ?? ''}}">
+	<meta name="twitter:image" content="https://{{@HOST}}/images/og-image.png">
+	<link rel="canonical" href="https://{{@HOST}}/{{@ml.current}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<check if="{{@DEBUG > 0}}">
 		<link rel="stylesheet" href="code.css"/>
 	</check>
-	<style>
-	</style>
 	<link rel="stylesheet" href="/assets/css?{{@csstime ?? ''}}{{@GET.cc ?? null == '1' ? '&t=' . time() : ''}}"/>
 	<script defer src="/assets/js?{{@jstime ?? ''}}{{@GET.cc ?? null == '1' ? '&t=' . time() : ''}}"></script>
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
