@@ -100,17 +100,19 @@ x-transition:leave-end="menu-leave-end"
 	<div>
 		<nav languages>
 			<repeat group="{{@ml.languages}}" value="{{@v}}">
-				<a href="{{@mlalias(@ALIAS, [], @v)}}">
-					<check if="{{@ml.current == @v}}">
-						<true>
-							<svg class="selected"><use xlink:href="/svg/symbols.svg#caret-right"></use></svg>
-						</true>
-						<false>
-							<svg><use xlink:href="/svg/symbols.svg#dot"></use></svg>
-						</false>
-					</check>
-					{{\ucfirst(\Locale::getDisplayLanguage(@v, @v))}}
-				</a>
+				<check if="{{\array_key_exists(@ALIAS ?? '', @ALIASES)}}">
+					<a href="{{@mlalias(@ALIAS, [], @v)}}">
+						<check if="{{@ml.current == @v}}">
+							<true>
+								<svg class="selected"><use xlink:href="/svg/symbols.svg#caret-right"></use></svg>
+							</true>
+							<false>
+								<svg><use xlink:href="/svg/symbols.svg#dot"></use></svg>
+							</false>
+						</check>
+						{{\ucfirst(\Locale::getDisplayLanguage(@v, @v))}}
+					</a>
+				</check>
 			</repeat>
 		</nav>
 		<nav sections>
