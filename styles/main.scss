@@ -1,14 +1,13 @@
 :root {
 	--a: hsl(var(--basehue) 75% calc(var(--text-l) * 2));
 	--basehue: 220;
-	--bg-button: hsl(var(--basehue) 50% calc(var(--bg-l) / 1.125));
 	--bg-button-hover: hsl(var(--basehue) 75% calc(var(--bg-l) / 1.25));
+	--bg-button: hsl(var(--basehue) 50% calc(var(--bg-l) / 1.125));
 	--bg-l: 95%;
 	--bg-menu: hsl(var(--basehue) 10% calc(var(--bg-l) - 5%) / 0.75);
 	--block-p: 1vh 2vw;
 	--c: hsl(var(--basehue) 5% var(--text-l) / 0.85);
 	--eio: cubic-bezier(.65,.05,.36,1);
-	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
 	--h-l: 50%;
 	--ms: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 	--ss: -apple-system, Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -50,7 +49,7 @@ body {
 	background: hsl(var(--basehue) 15% var(--bg-l));
 	color: var(--c);
 	font-family: var(--ss);
-	font-size: clamp(1rem, 1.8vw, 1.25rem);
+	font-size: clamp(1rem, 0.95rem + 0.25vw, 1.25rem);
 	font-weight: 200;
 	margin: 0;
 	padding: 0;
