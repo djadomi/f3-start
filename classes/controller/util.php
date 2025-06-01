@@ -95,6 +95,7 @@ class Util extends Main {
 						'inc/htmx.min.js',
 						'inc/alpine-collapse.min.js',
 						'inc/alpine-persist.min.js',
+						'inc/alpine-anchor.min.js',
 						'inc/alpine.min.js',
 						'inc/css-scope-inline.js',
 					],
